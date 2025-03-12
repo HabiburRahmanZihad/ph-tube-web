@@ -50,15 +50,21 @@
         </nav>
     </header>
 
-    <nav id="category-container" class="flex justify-center items-center gap-5 py-5">
-        <button class="btn btn-sm">All</button>
-        <button class="btn btn-sm">All</button>
-        <button class="btn btn-sm">All</button>
-        <button class="btn btn-sm">All</button>
-    </nav>
-
     <!-- Main section -->
-    <main></main>
+    <main>
+        <!-- Dynamic Button with Api -->
+        <nav id="category-container" class="flex justify-center items-center gap-5 py-5">
+            <div>
+                <button onclick="loadVideos()" class="btn btn-sm bg-[#FF1F3D] text-white">All</button>
+            </div>
+        </nav>
+
+        <!-- Dynamic Video Container -->
+        <section class="w-11/12 mx-auto grid grid-cols-4 gap-6" id="video-container">
+
+
+        </section>
+    </main>
 
     <!-- Footer section -->
     <footer></footer>
