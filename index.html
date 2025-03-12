@@ -31,6 +31,14 @@
             }
         }
     </style>
+
+    <!-- Custom Css -->
+    <style>
+        .active {
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="inter">
@@ -52,22 +60,22 @@
 
     <!-- Main section -->
     <main>
-        <!-- Dynamic Button with Api -->
+        <!--! Dynamic Button with Api -->
         <nav id="category-container" class="flex justify-center items-center gap-5 py-5">
             <div>
-                <button onclick="loadVideos()" class="btn btn-sm bg-[#FF1F3D] text-white">All</button>
+                <button id="btn-all" onclick="loadVideos()" class="btn btn-sm">All</button>
             </div>
         </nav>
 
-        <!-- Dynamic Video Container -->
+        <!--! Dynamic Video Container -->
         <section class="w-11/12 mx-auto grid grid-cols-4 gap-6" id="video-container">
 
-
+            <div class="col-span-full text-center flex flex-col items-center justify-center space-y-5 py-20">
+                <img src="assets/Icon.png" alt="">
+                <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+            </div>
         </section>
     </main>
-
-    <!-- Footer section -->
-    <footer></footer>
 
     <!-- Custom Js -->
     <script src="scripts/index.js"></script>

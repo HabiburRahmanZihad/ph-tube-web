@@ -1,3 +1,11 @@
+function removeActiveClass() {
+    const buttons = document.getElementsByClassName('active');
+
+    for (let btn of buttons) {
+        btn.classList.remove('active');
+    }
+}
+
 function loadCategories() {
     //? 1- fetch data from the server
 
@@ -12,9 +20,34 @@ function loadCategories() {
 function loadVideos() {
     fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
         .then((res) => res.json())
-        .then((data) => displayVideos(data.videos));
+        .then((data) => {
+            removeActiveClass();
+            document.getElementById('btn-all').classList.add('active');
+            displayVideos(data.videos)
+
+        });
 }
 
+function loadCategoriesVideos(id) {
+    // console.log(id);
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+    // console.log(url);
+    fetch(url)
+        .then((res) => res.json())
+        .then(data => {
+            // console.log(data);
+
+
+            const clickedButton = document.getElementById(`btn-${id}`);
+            removeActiveClass();
+
+            clickedButton.classList.add('active');
+
+            // console.log(clickedButton);
+
+            displayVideos(data.category)
+        });
+}
 
 /**
  *  {
@@ -39,7 +72,7 @@ function displayCategories(categories) {
         const categoryDiv = document.createElement('div');
 
         categoryDiv.innerHTML = `
-        <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category} </button>
+        <button id="btn-${cat.category_id}" onclick="loadCategoriesVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category} </button>
         `
 
         //?append the element to the container
@@ -75,6 +108,21 @@ const displayVideos = (videos) => {
     //? get the container
     const vidContainer = document.getElementById('video-container');
 
+
+    //? Clear the Video container
+    vidContainer.innerHTML = '';
+
+    //* console.log(videos.length); // it will return the number of videos in the array of objects
+
+    if (videos.length === 0) {
+        vidContainer.innerHTML = `
+        <div class="col-span-full text-center flex flex-col items-center justify-center space-y-5 py-20">
+                <img src="assets/Icon.png" alt="">
+                <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+            </div>
+        `;
+        return;
+    }
 
     //? loop Operation On array of objects
     videos.forEach(video => {
