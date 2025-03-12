@@ -43,22 +43,33 @@
 
 <body class="inter">
 
-    <!-- Header section -->
+    <!--? Header section -->
     <header>
         <nav class="w-11/12 mx-auto flex justify-between items-center border-b-2 py-5 border-[#17171733]">
             <div class="logo">
                 <img class="w-[120px]" src="./assets/Logo.png" alt="">
             </div>
+
             <div class="sort">
-                <button class="btn bg-[#25252533]">Sort by View</button>
+                <label class="input flex items-center gap-3">
+                    <svg class="h-[1.4em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input id="search-input" type="search" required placeholder="Search" />
+                </label>
             </div>
+
             <div class="blogs">
-                <button class="btn bg-[#FF1F3D] text-white">Blogs</button>
+                <button class="btn bg-[#FF1F3D] text-white">Sort by View</button>
             </div>
         </nav>
     </header>
 
-    <!-- Main section -->
+    <!--? Main section -->
     <main>
         <!--! Dynamic Button with Api -->
         <nav id="category-container" class="flex justify-center items-center gap-5 py-5">
@@ -74,10 +85,34 @@
                 <img src="assets/Icon.png" alt="">
                 <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
             </div>
+
+
+
         </section>
+
+
+        <!--! Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+        <dialog id="video_details" class="modal">
+            <div class="modal-box">
+
+                <div id="details-container">
+
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn" type="submit">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
     </main>
 
-    <!-- Custom Js -->
+    <!--? Custom Js -->
     <script src="scripts/index.js"></script>
 </body>
 
